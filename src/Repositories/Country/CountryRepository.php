@@ -8,7 +8,7 @@ interface CountryRepository
 
     public function findByCode($code);
 
-    public function findByType($type, $parentId);
+    public function findByType($type, $parentId = null);
 
     public function getCountryByCode($code);
 }

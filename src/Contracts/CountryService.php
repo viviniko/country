@@ -4,5 +4,16 @@ namespace Viviniko\Country\Contracts;
 
 interface CountryService
 {
-    public function lists($column = 'name', $key = null);
+    /**
+     * Get all countries.
+     *
+     * @return mixed
+     */
+    public function getCountries();
+
+    /**
+     * @param $code
+     * @return mixed
+     */
+    public function findByCode($code);
 }

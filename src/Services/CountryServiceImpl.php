@@ -2,7 +2,8 @@
 
 namespace Viviniko\Country\Services;
 
-use Viviniko\Address\Repositories\Country\CountryRepository;
+use Viviniko\Country\Enums\CountryType;
+use Viviniko\Country\Repositories\Country\CountryRepository;
 use Viviniko\Country\Contracts\CountryService as CountryServiceInterface;
 
 class CountryServiceImpl implements CountryServiceInterface
@@ -21,8 +22,13 @@ class CountryServiceImpl implements CountryServiceInterface
         $this->countries = $countries;
     }
 
-    public function lists($column = 'name', $key = null)
+    public function findByCode($code)
     {
-        return $this->countries->lists($column, $key);
+        return $this->countries->findByCode($code);
+    }
+
+    public function getCountries()
+    {
+        return $this->countries->findByType(CountryType::COUNTRY);
     }
 }

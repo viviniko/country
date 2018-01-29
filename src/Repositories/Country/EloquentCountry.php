@@ -15,12 +15,12 @@ class EloquentCountry extends SimpleRepository implements CountryRepository
 
     public function findByCode($code)
     {
-        return $this->findBy(['cca2' => $code, 'type' => 1])->first();
+        return $this->createModel()->where(['cca2' => $code, 'type' => 1])->first();
     }
 
-    public function findByType($type, $parentId)
+    public function findByType($type, $parentId = null)
     {
-        return $this->findBy(['type' => $type, 'parent_id' => $parentId]);
+        return $this->findBy(array_merge(['type' => $type], is_null($parentId) ? [] : ['parent_id' => $parentId]));
     }
 
     public function getCountryByCode($code)
