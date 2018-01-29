@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Viviniko\Country\Console\Commands\CountryTableCommand;
 use Viviniko\Country\Console\CountrySeedCommand;
 
-class AddressServiceProvider extends BaseServiceProvider
+class CountryServiceProvider extends BaseServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -51,8 +51,8 @@ class AddressServiceProvider extends BaseServiceProvider
     public function registerRepositories()
     {
         $this->app->singleton(
-            \Viviniko\Address\Repositories\Country\CountryRepository::class,
-            \Viviniko\Address\Repositories\Country\EloquentCountry::class
+            \Viviniko\Country\Repositories\Country\CountryRepository::class,
+            \Viviniko\Country\Repositories\Country\EloquentCountry::class
         );
     }
 
