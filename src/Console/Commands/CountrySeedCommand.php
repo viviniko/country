@@ -12,7 +12,7 @@ class CountrySeedCommand extends Command
      *
      * @var string
      */
-    protected $name = 'address:country:seed';
+    protected $name = 'country:seed';
 
     /**
      * The console command description.
