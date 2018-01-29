@@ -8,9 +8,12 @@ class Country extends Model
 {
     public $timestamps = false;
 
-    protected $tableConfigKey = 'country.countries_table';
+    protected $tableConfigKey = 'address.countries_table';
 
-    protected $fillable = [
-        'name', 'code',
-    ];
+    protected $fillable = [ 'id', 'name', 'cca2', 'cca3', 'parent_id', 'type'];
+
+    public function getCodeAttribute()
+    {
+        return $this->cca2;
+    }
 }

@@ -31,7 +31,13 @@ class CountrySeedCommand extends Command
     {
         Country::truncate();
 
+        $stateStart = false;
         foreach ($this->getCountries() as $country) {
+            if (!$stateStart && empty($country['id'])) {
+                $stateStart = true;
+                $country['id'] = 1001;
+            }
+            $country['cca3'] = isset($country['cca3']) ? $country['cca3'] : '';
             Country::create($country);
         }
     }

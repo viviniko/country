@@ -28,10 +28,17 @@ class CreateCountryTable extends Migration
     public function up()
     {
         // Create table for storing countries
+        // Create table for storing countries
         Schema::create($this->countriesTable, function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 64);
-            $table->string('code', 2);
+            $table->char('cca2', 2);
+            $table->char('cca3', 3);
+            $table->unsignedInteger('parent_id')->default(0);
+            $table->unsignedTinyInteger('type')->default(1);
+
+            $table->index(['type']);
+            $table->index(['parent_id']);
         });
     }
 
