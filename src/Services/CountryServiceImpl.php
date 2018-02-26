@@ -32,20 +32,8 @@ class CountryServiceImpl implements CountryServiceInterface
         return $this->countries->findByType(CountryType::COUNTRY);
     }
 
-    public function getStateByName($name, $countryId)
+    public function getStates($countryId)
     {
-        $states = $this->countries->findByType(CountryType::STATE, $countryId);
-        if (count($states) <= 0) {
-            return null; // country not found.
-        }
-
-        $name = strtolower($name);
-        foreach ($states as $state) {
-            if (strtolower($state->name) == $name || strtolower($state->cca2) == $name) {
-                return $state;
-            }
-        }
-
-        return false; // state not found.
+        return $this->countries->findByType(CountryType::STATE, $countryId);
     }
 }
