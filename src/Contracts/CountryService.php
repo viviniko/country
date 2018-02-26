@@ -12,6 +12,15 @@ interface CountryService
     public function getCountries();
 
     /**
+     * Get state by given name.
+     *
+     * @param $name
+     * @param $countryId
+     * @return mixed
+     */
+    public function getStateByName($name, $countryId);
+
+    /**
      * @param $code
      * @return mixed
      */
