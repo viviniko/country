@@ -51,8 +51,8 @@ class CountryServiceProvider extends BaseServiceProvider
     public function registerRepositories()
     {
         $this->app->singleton(
-            \Viviniko\Country\Repositories\Country\CountryRepository::class,
-            \Viviniko\Country\Repositories\Country\EloquentCountry::class
+            \Viviniko\Country\Repositories\CountryRepository::class,
+            \Viviniko\Country\Repositories\EloquentCountry::class
         );
     }
 
@@ -78,7 +78,7 @@ class CountryServiceProvider extends BaseServiceProvider
     protected function registerCountryService()
     {
         $this->app->singleton(
-            \Viviniko\Country\Contracts\CountryService::class,
+            \Viviniko\Country\Services\CountryService::class,
             \Viviniko\Country\Services\CountryServiceImpl::class
         );
     }
@@ -91,7 +91,7 @@ class CountryServiceProvider extends BaseServiceProvider
     public function provides()
     {
         return [
-            \Viviniko\Country\Contracts\CountryService::class
+            \Viviniko\Country\Services\CountryService::class
         ];
     }
 }

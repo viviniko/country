@@ -3,37 +3,36 @@
 namespace Viviniko\Country\Services;
 
 use Viviniko\Country\Enums\CountryType;
-use Viviniko\Country\Repositories\Country\CountryRepository;
-use Viviniko\Country\Contracts\CountryService as CountryServiceInterface;
+use Viviniko\Country\Repositories\CountryRepository;
 
-class CountryServiceImpl implements CountryServiceInterface
+class CountryServiceImpl implements CountryService
 {
     /**
-     * @var \Viviniko\Country\Repositories\Country\CountryRepository
+     * @var \Viviniko\Country\Repositories\CountryRepository
      */
     protected $countries;
 
     /**
      * AddressService constructor.
-     * @param \Viviniko\Country\Repositories\Country\CountryRepository $countries
+     * @param \Viviniko\Country\Repositories\CountryRepository $countries
      */
     public function __construct(CountryRepository $countries)
     {
         $this->countries = $countries;
     }
 
-    public function findByCode($code)
+    public function getCountryByCode($code)
     {
         return $this->countries->findByCode($code);
     }
 
     public function getCountries()
     {
-        return $this->countries->findByType(CountryType::COUNTRY);
+        return $this->countries->findAllByType(CountryType::COUNTRY);
     }
 
     public function getStates($countryId)
     {
-        return $this->countries->findByType(CountryType::STATE, $countryId);
+        return $this->countries->findAllByType(CountryType::STATE, $countryId);
     }
 }

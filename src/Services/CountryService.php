@@ -1,6 +1,6 @@
 <?php
 
-namespace Viviniko\Country\Contracts;
+namespace Viviniko\Country\Services;
 
 interface CountryService
 {
@@ -23,5 +23,5 @@ interface CountryService
      * @param $code
      * @return mixed
      */
-    public function findByCode($code);
+    public function getCountryByCode($code);
 }
