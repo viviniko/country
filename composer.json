@@ -24,7 +24,10 @@
         "laravel": {
             "providers": [
                 "Viviniko\\Country\\CountryServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "Countries": "Viviniko\\Country\\Facades\\Countries"
+            }
         }
     },
     "minimum-stability": "dev",

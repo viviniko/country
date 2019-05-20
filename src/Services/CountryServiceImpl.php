@@ -23,7 +23,7 @@ class CountryServiceImpl implements CountryService
 
     public function getCountryByCode($code)
     {
-        return $this->countries->findByCode($code);
+        return $this->countries->findByTypeAndCode(CountryType::COUNTRY, $code);
     }
 
     public function getCountries()
@@ -33,6 +33,6 @@ class CountryServiceImpl implements CountryService
 
     public function getStates($countryId)
     {
-        return $this->countries->findAllByType(CountryType::STATE, $countryId);
+        return $this->countries->findAllByTypeAndParentId(CountryType::STATE, $countryId);
     }
 }

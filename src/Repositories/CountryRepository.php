@@ -2,11 +2,13 @@
 
 namespace Viviniko\Country\Repositories;
 
-interface CountryRepository
+use Viviniko\Repository\CrudRepository;
+
+interface CountryRepository extends CrudRepository
 {
-    public function all();
+    public function findAllByType($type);
 
-    public function findAllByType($type, $parentId = null);
+    public function findAllByTypeAndParentId($type, $parentId);
 
-    public function findByCode($code);
+    public function findByTypeAndCode($type, $code);
 }

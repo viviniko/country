@@ -37,7 +37,7 @@ class CreateCountryTable extends Migration
             $table->unsignedInteger('parent_id')->default(0);
             $table->unsignedTinyInteger('type')->default(1);
 
-            $table->index(['type']);
+            $table->index(['type', 'cca2']);
             $table->index(['parent_id']);
         });
     }

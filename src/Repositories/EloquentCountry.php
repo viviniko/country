@@ -12,13 +12,18 @@ class EloquentCountry extends EloquentRepository implements CountryRepository
         parent::__construct(Config::get('country.country'));
     }
 
-    public function findAllByType($type, $parentId = null)
+    public function findAllByType($type)
     {
-        return $this->findAllBy(array_merge(['type' => $type], is_null($parentId) ? [] : ['parent_id' => $parentId]));
+        return $this->findAllBy(['type' => $type]);
     }
 
-    public function findByCode($code)
+    public function findAllByTypeAndParentId($type, $parentId)
     {
-        return $this->findBy(['cca2' => $code, 'type' => 1]);
+        return $this->findAllBy(['type' => $type, 'parent_id' => $parentId]);
+    }
+
+    public function findByTypeAndCode($type, $code)
+    {
+        return $this->findBy(['type' => $type, 'cca2' => $code]);
     }
 }
